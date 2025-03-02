@@ -98,7 +98,7 @@ repository_network_dir="$base_data_dir/default_config"
 #!/bin/bash
 
 # Função para adicionar regras no iptables permitindo apenas portas 80 (HTTP) e 443 (HTTPS) para IPs de clientes
-add_client_ports_80_443() {
+add_client_allow_socket() {
     local file_path="$1"
 
     if [[ -f "$file_path" ]]; then
@@ -154,9 +154,9 @@ add_iptables_rules() {
     fi
 }
 
-# Adiciona regras para os IPs de Clientes 
-add_client_ports_80_443 "$client_network_dir/default_client.txt"
-# Adiciona regras para os IPs de Repositórios 
+# Adiciona regras para os IPs de Clientes
+add_client_allow_socket "$client_network_dir/default_client.txt"
+# Adiciona regras para os IPs de Repositórios
 add_iptables_rules "$repository_network_dir/repositorys_ip4.txt"
 # Adiciona regras para os IPs privados
 add_iptables_rules "$private_network_dir/private_ipv4.txt"
@@ -217,7 +217,7 @@ add_iptables_rules_on_docker "$public_services_dir/public_ip.txt"
 add_iptables_rules_on_docker "$router_network_dir/gateway_ip.txt"
 # Adiciona regra para o IP do Cliente (de router_network)
 add_iptables_rules_on_docker "$client_network_dir/default_client.txt"
-# Adiciona regras para os IPs de Repositórios 
+# Adiciona regras para os IPs de Repositórios
 add_iptables_rules_on_docker "$repository_network_dir/repositorys_ip4.txt"
 
 sudo iptables -A DOCKER-USER -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT

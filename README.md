@@ -1,6 +1,6 @@
 # Projeto de Configuração de iptables via Shell
 
-Este projeto tem como objetivo configurar as regras do `iptables` através de scripts em shell, permitindo a liberação controlada de tráfego de rede com base em várias fontes e necessidades. Abaixo estão as funcionalidades principais e instruções para uso do script.
+Este projeto tem como objetivo configurar as regras do `iptables` através de scripts em shell visando a segurança para Docker(Linux), permitindo a liberação controlada de tráfego de rede com base em várias fontes e necessidades. Abaixo estão as funcionalidades principais e instruções para uso do script.
 
 ## Funcionalidades
 
@@ -9,6 +9,8 @@ Este projeto tem como objetivo configurar as regras do `iptables` através de sc
 - **Baixar IPs Públicos**: O script também faz o download de IPs públicos que podem ser utilizados para configuração de acesso.
 - **Verificar IPs Privados**: O script verifica a rede interna (privada) e permite a configuração de regras para os IPs dessa rede.
 - **Adicionar Regras para Clientes**: É possível liberar o acesso de IPs específicos a portas como 80 (HTTP), 443 (HTTPS), 8010 e 4443 (para serviços do Gitness). A liberação de acesso é feita por parâmetros passados na execução do script.
+
+### Caso queria abrir portas, adicione as regras na função **add_client_allow_socket**
 
 ### Comando para adicionar um novo cliente:
 ```bash
@@ -25,6 +27,14 @@ Este projeto tem como objetivo configurar as regras do `iptables` através de sc
 ```
 
 - **`-h`**: Exibe o menu de ajuda com informações sobre como usar o script.
+
+### Comando para redefinir seu firewall de fábrica:
+```bash
+./main.sh -r
+```
+
+- **`-r`**: Usa a função de reset para redefinição do firewall
+
 
 ### Configuração de Repositórios Públicos:
 O script também configura regras para permitir o acesso aos repositórios públicos Linux, como repositórios de pacotes e linguagens. Estes repositórios são essenciais para o gerenciamento de pacotes e dependências de software.
@@ -84,4 +94,4 @@ Sinta-se à vontade para contribuir com melhorias ou sugestões. Para contribuir
 
 ## Licença
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
+Este projeto está licenciado sob a [Licença Apache2](LICENSE).

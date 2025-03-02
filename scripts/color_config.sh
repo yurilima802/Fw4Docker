@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Definindo as cores
-# Definindo as cores
 export GREEN='\033[0;32m'       # Verde
 export CYAN='\033[0;36m'        # Ciano
 export YELLOW='\033[1;33m'      # Amarelo
@@ -25,7 +24,6 @@ export BACKGROUND_BLUE='\033[44m'  # Fundo azul
 export BACKGROUND_YELLOW='\033[43m' # Fundo amarelo
 export BACKGROUND_CYAN='\033[46m'  # Fundo ciano
 export BACKGROUND_WHITE='\033[47m' # Fundo branco
-
 
 # Carregar as cores
 ## source "/caminho/para/color_config.sh"
